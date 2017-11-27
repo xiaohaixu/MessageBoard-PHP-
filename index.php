@@ -7,5 +7,5 @@ require_once 'model/db.php';
 //获取所有留言信息
 $msgs = getAllMsgs();
 // 显示视图文件
-include_once 'view/index.html';
+include_once 'view/index.php';
 ?>

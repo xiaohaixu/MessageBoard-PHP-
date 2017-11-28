@@ -49,6 +49,41 @@ function getAllMsgs() {
 }
 
 /**
+ * 获取指定页的记录(所有记录中的指定页记录)
+ * @param  integer $page     [当前是第几页]
+ * @param  integer $pageSize [每一页的记录个数]
+ * @return [array]            [二维数组]
+ */
+function getMsgsByPageNumber( $page = 1, $pageSize = 10) {
+  // 构造当前页开始记录的下标
+  $pageBegin = ($page - 1) * $pageSize;
+  // 连接数据库
+  $db = initDbConnect();
+  // 获取所有留言信息（只考虑msgs表，暂时不考虑rmsgs表）
+  $sql = "select * from msgs limit {$pageBegin}, {$pageSize}";
+  $allMsgs = $db->query($sql);
+  // 处理结果集
+  $results = array();
+  while ($row = $allMsgs->fetch(PDO::FETCH_ASSOC)) {
+    $results[] = $row;
+  }
+  //返回结果集
+  return $results;
+}
+
+/**
+ * 获取留言板数据库所有记录个数
+ * @return [int] [记录个数]
+ */
+function getMsgsCount(){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "select count(*) from msgs";
+  $allMsgs = $db->query($sql);
+  $num_rows = $allMsgs->fetchColumn();
+  return $num_rows;
+}
+/**
  * 关闭数据库
  */
 function closeConnect() {

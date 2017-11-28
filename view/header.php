@@ -6,7 +6,12 @@
   </head>
   <body>
     <div id="header">
-      <!--用户没有登录系统-->
-      <a href="#">登录</a>
-      <a href="#">注册</a>
+      <?php
+        if(false == $loginedUser){ //用户没有登录系统
+            echo "<a href='#'>登录</a>|<a href='#'>注册</a> </li>";
+        }else{
+          echo "Welcome".$loginedUser;
+        }
+       ?>
+
     </div>

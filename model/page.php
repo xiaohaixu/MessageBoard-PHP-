@@ -11,7 +11,13 @@
 function createPage($url, $currentPage, $pageCount) {
   // "上一页"和“下一页”
   $lastPage = $currentPage - 1;
+  if ($lastPage < 1) {
+    $lastPage = 1;
+  }
   $nextPage = $currentPage + 1;
+  if ($nextPage > $pageCount) {
+    $nextPage = $pageCount;
+  }
   $html = '<ul>';
   // 处理“首页”
   $html .= "<li><a href = '{$url}?page=1'>首页</a></li>";

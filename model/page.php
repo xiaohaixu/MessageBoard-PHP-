@@ -24,7 +24,7 @@ function createPage($url, $currentPage, $pageCount) {
   // 处理“上一页”
   $html .= "<li><a href = '{$url}?page={$lastPage}'>上一页</a></li>";
   // 处理“当前页”
-  $html .= "<li>$currentPage</li>";
+  $html .= "<li>第<input type='text' value='{$currentPage}' size='3'></input>页</li>";
   // 处理“下一页”
   $html .= "<li><a href = '{$url}?page={$nextPage}'>下一页</a></li>";
   // 处理“末页”

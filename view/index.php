@@ -14,7 +14,7 @@
       <ul>
       <?php
         foreach ($msgs as $row) {
-          echo "<li> <a href='#'>". $row['msg_title']."</a>";
+          echo "<li> <a href='view.php?msg_id={$row['msg_id']}'>". $row['msg_title']."</a>";
           if(false != $loginedUser){ //用户处于登录状态
             // 若当前留言属于当前用户发表的
             echo "<a href='#'>编辑</a><a href='#'>删除</a> </li>";

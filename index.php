@@ -26,8 +26,6 @@ if($currentPage > $pageCount){
   $currentPage = $pageCount;
 }
 
-
-
 // 获取当前登录的用户名
 $loginedUser = getLoignedUser();
 

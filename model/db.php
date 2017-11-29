@@ -72,6 +72,22 @@ function getMsgsByPageNumber( $page = 1, $pageSize = 10) {
 }
 
 /**
+ * 通过主键id获取某条留言详细信息
+ * @param  [type] $id [主键]
+ * @return [array]     [关联数组]
+ */
+function getMsgsById($id){
+  // 连接数据库
+  $db = initDbConnect();
+  // 获取所有留言信息（只考虑msgs表，暂时不考虑rmsgs表）
+  $sql = "select * from msgs, users where msg_user_id=u_id and msg_id={$id}";
+  $allMsgs = $db->query($sql);
+  // 处理结果集
+  $results = $allMsgs->fetch(PDO::FETCH_ASSOC);
+  //返回结果集
+  return $results;
+}
+/**
  * 获取留言板数据库所有记录个数
  * @return [int] [记录个数]
  */

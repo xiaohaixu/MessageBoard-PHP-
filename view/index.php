@@ -1,5 +1,14 @@
 <?php include_once 'header.php'; ?>
-
+<style type="text/css">
+  #page ul {
+    overflow: hidden;
+  }
+  #page ul li {
+    float: left;
+    list-style: none;
+    margin-right: 20px;
+  }
+</style>
     <div id="content">
       <!--输入留言板信息到一个列表-->
       <ul>
@@ -15,6 +24,11 @@
         }
        ?>
        </ul>
+    </div>
+    <div id="page">
+      <?php
+        echo createPage($_SERVER['PHP_SELF'], $currentPage, $pageCount);
+       ?>
     </div>
 
 <?php include_once 'footer.php'; ?>

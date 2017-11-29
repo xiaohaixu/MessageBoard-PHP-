@@ -7,6 +7,7 @@ $pageConfig = require_once 'config/page.php';
 // 加载函数库
 require_once 'model/db.php';
 require_once 'model/user.php';
+require_once 'model/page.php'; //分页码相关函数库
 // 获取当前页码
 if(isset($_GET[$pageConfig['page_params']])){
   $currentPage = $_GET[$pageConfig['page_params']];

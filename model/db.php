@@ -129,6 +129,30 @@ function insertUser($userName, $userPswd){
   $sql = "insert into users(u_name, u_pswd) value('$userName', '$userPswd')";
   return $db->query($sql);
 }
+
+function getUserIdByName($u_name){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "select * from users where u_name = '$u_name'";
+  $r = $db->query($sql);
+  $results = $r->fetch(PDO::FETCH_ASSOC);
+  return $results['u_id'];
+}
+
+/**
+ * [insertMsg description]
+ * @param  [type] $m_title       [description]
+ * @param  [type] $m_content     [description]
+ * @param  [type] $loginedUserId [description]
+ * @return [type]                [description]
+ */
+function insertMsg($m_title, $m_content, $loginedUserId){
+  // 连接数据库
+  $db = initDbConnect();
+  // 获取所有留言信息（只考虑msgs表，暂时不考虑rmsgs表）
+  $sql = "insert into msgs(msg_title, msg_content, msg_user_id) value('$m_title', '$m_content', '$loginedUserId')";
+  return $db->query($sql);
+}
 /**
  * 关闭数据库
  */

@@ -30,5 +30,11 @@
         echo createPage($_SERVER['PHP_SELF'], $currentPage, $pageCount);
        ?>
     </div>
+    <?php
+      if(@$loginedUser){ // 用户已经登录
+        echo "<div id='add_msg'><a href='addMsg.php'>添加留言</a></div>";
+      }
+    ?>
+
 
 <?php include_once 'footer.php'; ?>

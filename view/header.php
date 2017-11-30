@@ -8,9 +8,10 @@
     <div id="header">
       <?php
         if(false == $loginedUser){ //用户没有登录系统
-            echo "<a href='#'>登录</a>|<a href='#'>注册</a> </li>";
+            echo "<a href='login.php'>登录</a>|<a href='#'>注册</a> </li>";
         }else{
-          echo "Welcome".$loginedUser;
+          echo "Welcome! ".$loginedUser;
+          echo "<a href='logout.php'>注销</a>";
         }
        ?>
 

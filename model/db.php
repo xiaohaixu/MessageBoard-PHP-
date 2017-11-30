@@ -99,6 +99,22 @@ function getMsgsCount(){
   $num_rows = $allMsgs->fetchColumn();
   return $num_rows;
 }
+
+/**
+ * 根据传入的用户名和密码判断用户是否是有效的
+ * @param  [type]  $userName [description]
+ * @param  [type]  $userPswd [description]
+ * @return boolean           [若用户名和密码有效，返回true；否则返回false]
+ */
+function isValidUser($userName, $userPswd){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "select * from users where u_name = '$userName' and u_pswd = '$userPswd'";
+  $r = $db->query($sql);
+  // 处理查询结果
+  $num_rows = $r->fetchColumn();
+  return $num_rows;
+}
 /**
  * 关闭数据库
  */

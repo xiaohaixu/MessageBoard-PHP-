@@ -115,6 +115,20 @@ function isValidUser($userName, $userPswd){
   $num_rows = $r->fetchColumn();
   return $num_rows;
 }
+
+/**
+ * 向users数据表中插入一条记录
+ * @param  [type] $userName [用户名]
+ * @param  [type] $userPswd [密码]
+ * @return [type]           [若插入记录，返回true；否则返回false]
+ */
+function insertUser($userName, $userPswd){
+  // 连接数据库
+  $db = initDbConnect();
+  // 获取所有留言信息（只考虑msgs表，暂时不考虑rmsgs表）
+  $sql = "insert into users(u_name, u_pswd) value('$userName', '$userPswd')";
+  return $db->query($sql);
+}
 /**
  * 关闭数据库
  */

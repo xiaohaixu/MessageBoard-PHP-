@@ -39,4 +39,14 @@ function getLoignedUser() {
   }
   return false;
 }
+
+/**
+ * 实现用户注册
+ * @param  [type] $userName [用户名]
+ * @param  [type] $userPswd [密码]
+ * @return [type]           [若注册成功，返回true；否则返回false]
+ */
+function doUserRegister($userName, $userPswd){
+  return insertUser($userName, $userPswd);
+}
  ?>

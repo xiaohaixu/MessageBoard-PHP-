@@ -177,7 +177,13 @@ function deleteMsgById($m_id){
   // 连接数据库
   $db = initDbConnect();
   $sql = "delete from msgs where msg_id = '$m_id'";
-  return $db->query($sql);
+  $status = $db->query($sql);
+  // 若留言表中记录删除成功的话，同时要一并删除回帖表中的记录
+  if($status){
+    $sql = "delete from rmsgs where r_m_id = '$m_id'";
+    return $db->query($sql);
+  }
+  return false;
 }
 
 /**

@@ -192,6 +192,26 @@ function addRmsgs($r_u_id, $r_m_id, $r_content){
   $sql = "insert into rmsgs(r_u_id, r_m_id, r_content) value('$r_u_id', '$r_m_id', '$r_content')";
   return $db->query($sql);
 }
+
+/**
+ * 根据留言id，获取当前所拥有的回帖数组
+ * @param  [type] $m_id [留言主键ID]
+ * @return [array]       [满足条件的二维数组]
+ */
+function getRmsgsByMid($m_id){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "select * from rmsgs, users where rmsgs.r_m_id = $m_id and rmsgs.r_u_id = users.u_id";
+  $allMsgs = $db->query($sql);
+  // 处理结果集
+  // 处理结果集
+  $results = array();
+  while ($row = $allMsgs->fetch(PDO::FETCH_ASSOC)) {
+    $results[] = $row;
+  }
+  //返回结果集
+  return $results;
+}
 /**
  * 关闭数据库
  */

@@ -14,7 +14,18 @@
         内容：<br />
         <?php echo $msg['msg_content']; ?>
       </div>
-
+      <hr />
+      <div id="rmsgs" style="margin-top: 20px; margin_bottom: 20px">
+        <?php
+          foreach($rmsgs as $r){
+            echo "<div>{$r['u_name']}:{$r['r_content']}</div>";
+            if($r['r_u_id'] == $r_u_id){ //当前回帖是当前登录用户所发表的
+              echo "<a href='deleteRmsgs.php?r_id={$r['r_id']}'>删除回帖</a>";
+            }
+          }
+         ?>
+      </div>
+      <hr />
       <div>
         <form action="" method="post">
           <input type="hidden" name="r_m_id" value="<?php echo $mid; ?>" />

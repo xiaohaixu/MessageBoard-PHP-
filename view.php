@@ -24,7 +24,8 @@ if(isset($_POST['r_content'])){
 }else{ //用户没有提交登录表单
   // 获取当前主键id所对应的留言信息
   $msg = getMsgsById($mid);
-  //print_r($msg);
+  $rmsgs = getRmsgsByMid($mid);
+  //print_r($rmsgs);
   // 显示视图文件
   include_once APP_PATH . '/view/view.php';
 }

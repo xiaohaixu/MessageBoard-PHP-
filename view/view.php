@@ -14,6 +14,17 @@
         内容：<br />
         <?php echo $msg['msg_content']; ?>
       </div>
+
+      <div>
+        <form action="" method="post">
+          <input type="hidden" name="r_m_id" value="<?php echo $mid; ?>" />
+          <input type="hidden" name="r_u_id" value="<?php echo $r_u_id; ?>" />
+          <p>回帖标题：<input type="text" name="r_title"></p>
+          <p>回帖内容：<textarea name="r_content"></textarea></p>
+          <p><input type="submit" value="回复" /></p>
+        </form>
+
+      </div>
     </div>
 
 <?php include_once 'footer.php'; ?>

@@ -179,6 +179,19 @@ function deleteMsgById($m_id){
   $sql = "delete from msgs where msg_id = '$m_id'";
   return $db->query($sql);
 }
+
+/**
+ * 向rmgs数据表中插入一条记录
+ * @param [type] $r_u_id    [回帖发表者主键id]
+ * @param [type] $r_m_id    [回帖的原始留言主键id]
+ * @param [type] $r_content [回帖内容]
+ */
+function addRmsgs($r_u_id, $r_m_id, $r_content){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "insert into rmsgs(r_u_id, r_m_id, r_content) value('$r_u_id', '$r_m_id', '$r_content')";
+  return $db->query($sql);
+}
 /**
  * 关闭数据库
  */

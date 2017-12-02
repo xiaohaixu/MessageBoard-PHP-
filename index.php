@@ -8,6 +8,10 @@ $pageConfig = require_once 'config/page.php';
 require_once 'model/db.php';
 require_once 'model/user.php';
 require_once 'model/page.php'; //分页码相关函数库
+// 获取当前登录的用户名
+$loginedUser = getLoignedUser();
+// 获取当前登录的用户ID
+$loginedUserId = getUserIdByName($loginedUser);
 // 获取当前页码
 if(isset($_GET[$pageConfig['page_params']])){
   $currentPage = $_GET[$pageConfig['page_params']];
@@ -26,8 +30,6 @@ if($currentPage > $pageCount){
   $currentPage = $pageCount;
 }
 
-// 获取当前登录的用户名
-$loginedUser = getLoignedUser();
 
 //获取所有留言信息
 $msgs = getMsgsByPageNumber($currentPage, $pageConfig['page_size']);

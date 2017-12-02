@@ -8,23 +8,27 @@ require_once 'model/user.php';
 $loginedUser = getLoignedUser();
 // 获取当前登录的用户ID
 $loginedUserId = getUserIdByName($loginedUser);
+// 获取当前待修改的留言主键id
+$m_id = $_GET['msg_id'];
 // 判断用户是否已经提交登录表单
 if(isset($_POST['m_title'])){ //用户提交登录表单
   // 获取表单数据
   $m_title = $_POST['m_title'];
   $m_content = $_POST['m_content'];
 
-  // 添加留言到数据库中
-  $status = insertMsg($m_title, $m_content, $loginedUserId);
-  // 添加留言后的处理
-  if($status){ // 添加留言成功
-    $responseMsg = "添加留言成功";
-  }else{ // 添加留言失败
-    $responseMsg = "添加留言失败";
+  // 修改留言到数据库中
+  $status = updateMsg($m_id, $m_title, $m_content);
+  // 修改留言后的处理
+  if($status){ // 修改留言成功
+    $responseMsg = "修改留言成功";
+  }else{ // 修改留言失败
+    $responseMsg = "修改留言失败";
   }
-  include_once 'view/after_add_msg.php';
+  include_once 'view/after_edit_msg.php';
 } else { //用户没有提交登录表单
+  // 获取原始留言数据
+  $msg = getMsgsById($m_id);
   // 显示表单
-  include_once 'view/add_msg.php';
+  include_once 'view/edit_msg.php';
 }
 ?>

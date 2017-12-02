@@ -153,6 +153,21 @@ function insertMsg($m_title, $m_content, $loginedUserId){
   $sql = "insert into msgs(msg_title, msg_content, msg_user_id) value('$m_title', '$m_content', '$loginedUserId')";
   return $db->query($sql);
 }
+
+/**
+ * 修改指定主键ID的留言
+ * @param  [type] $m_id      [待修改的留言的主键ID]
+ * @param  [type] $m_title   [修改后的留言标题]
+ * @param  [type] $m_content [修改后的留言内容]
+ * @return [type]            [description]
+ */
+function updateMsg($m_id, $m_title, $m_content){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "update msgs set msg_title = '$m_title',msg_content = '$m_content' where msg_id = '$m_id'";
+  return $db->query($sql);
+}
+
 /**
  * 关闭数据库
  */

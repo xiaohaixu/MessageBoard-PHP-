@@ -169,6 +169,17 @@ function updateMsg($m_id, $m_title, $m_content){
 }
 
 /**
+ * 删除指定主键id表示的记录
+ * @param  [type] $m_id [主键id]
+ * @return [type]       [description]
+ */
+function deleteMsgById($m_id){
+  // 连接数据库
+  $db = initDbConnect();
+  $sql = "delete from msgs where msg_id = '$m_id'";
+  return $db->query($sql);
+}
+/**
  * 关闭数据库
  */
 function closeConnect() {
